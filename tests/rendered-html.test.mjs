@@ -67,11 +67,11 @@ test("keeps the app and static deployment aligned", async () => {
   assert.match(css, /font-size:\s*160px/);
   assert.match(css, /font-weight:\s*600/);
   assert.match(css, /align-items:\s*start/);
-  assert.match(css, /justify-items:\s*center/);
+  assert.match(css, /justify-items:\s*start/);
   assert.match(css, /padding:\s*var\(--page-inset\)/);
   assert.match(css, /letter-spacing:\s*-0\.06em/);
   assert.match(css, /word-spacing:\s*-0\.12em/);
-  assert.match(css, /transform-origin:\s*center top/);
+  assert.match(css, /transform-origin:\s*left top/);
   assert.match(css, /@media \(min-width:\s*901px\) and \(hover:\s*hover\) and \(pointer:\s*fine\)/);
   assert.match(css, /@media \(max-width:\s*900px\), \(hover:\s*none\), \(any-pointer:\s*coarse\)/);
   assert.match(css, /flex-direction:\s*column/);
@@ -79,6 +79,7 @@ test("keeps the app and static deployment aligned", async () => {
   assert.match(css, /align-items:\s*flex-start/);
   assert.match(css, /line-height:\s*0\.88/);
   assert.match(css, /text-align:\s*left/);
+  assert.match(css, /transform-origin:\s*center top/);
   assert.doesNotMatch(css, /--line-scale/);
   assert.match(css, /\.desktopDash/);
   assert.match(css, /display:\s*none/);
@@ -87,6 +88,7 @@ test("keeps the app and static deployment aligned", async () => {
   assert.match(css, /\.screenWordmark\s*\{/);
   assert.match(staticBuilder, /--background:\s*#b6ff29/);
   assert.match(staticBuilder, /availableWidth/);
+  assert.match(staticBuilder, /availableWidth - 1/);
   assert.match(staticBuilder, /paddingLeft/);
   assert.match(staticBuilder, /data-fit-line>\s*studio/);
   assert.match(staticBuilder, /desktopDash/);

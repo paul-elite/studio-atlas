@@ -39,7 +39,7 @@ const html = String.raw`<!doctype html>
               : window.innerWidth;
             const width = wordmark.scrollWidth;
             if (width > 0) {
-              wordmark.style.setProperty("--wordmark-scale", String(availableWidth / width));
+              wordmark.style.setProperty("--wordmark-scale", String((availableWidth - 1) / width));
             }
           };
           document.fonts?.ready.then(fit);
@@ -76,7 +76,7 @@ body {
 .home {
   display: grid;
   align-items: start;
-  justify-items: center;
+  justify-items: start;
   min-height: 100vh;
   overflow: hidden;
   padding: var(--page-inset);
@@ -95,7 +95,7 @@ body {
   white-space: nowrap;
   word-spacing: -0.12em;
   transform: scale(var(--wordmark-scale, 1));
-  transform-origin: center top;
+  transform-origin: left top;
 }
 
 .screenWordmark span {
@@ -128,6 +128,7 @@ body {
     align-items: flex-start;
     line-height: 0.88;
     text-align: left;
+    transform-origin: center top;
   }
 
   .desktopDash + span {
