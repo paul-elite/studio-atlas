@@ -16,7 +16,7 @@ const html = String.raw`<!doctype html>
 </html>
 `;
 
-const css = String.raw`@import url("https://fonts.googleapis.com/css2?family=Geist:wght@900&display=swap");
+const css = String.raw`@import url("https://fonts.googleapis.com/css2?family=Geist:wght@600&display=swap");
 
 :root {
   --background: #41de03;
@@ -46,11 +46,12 @@ body {
   margin: 0;
   font-family: "Geist", Arial, Helvetica, sans-serif;
   font-size: 15.5vw;
-  font-weight: 900;
+  font-weight: 600;
   letter-spacing: 0;
   line-height: 0.82;
   text-align: center;
   white-space: nowrap;
+  word-spacing: -0.08em;
 }
 
 @media (max-width: 760px) {

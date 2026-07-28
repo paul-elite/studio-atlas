@@ -41,11 +41,12 @@ body {
   margin: 0;
   font-family: var(--font-geist, "Geist"), Arial, Helvetica, sans-serif;
   font-size: 15.5vw;
-  font-weight: 900;
+  font-weight: 600;
   letter-spacing: 0;
   line-height: 0.82;
   text-align: center;
   white-space: nowrap;
+  word-spacing: -0.08em;
 }
 
 @media (max-width: 760px) {
