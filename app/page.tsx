@@ -3,6 +3,9 @@ export default function Home() {
     <main className="home">
       <h1 className="screenWordmark" data-fit-wordmark>
         <span data-fit-line>studio</span>
+        <span className="desktopDash" aria-hidden="true">
+          —
+        </span>
         <span data-fit-line>atlas</span>
       </h1>
       <script

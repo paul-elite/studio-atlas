@@ -56,7 +56,11 @@ body {
   display: block;
 }
 
-.screenWordmark span + span {
+.desktopDash {
+  margin-inline: 0.02em;
+}
+
+.desktopDash + span {
   margin-left: -0.12em;
 }
 
@@ -72,7 +76,11 @@ body {
     transform-origin: center top;
   }
 
-  .screenWordmark span + span {
+  .desktopDash {
+    display: none;
+  }
+
+  .desktopDash + span {
     margin-top: -0.08em;
     margin-left: 0;
   }

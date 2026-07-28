@@ -12,6 +12,7 @@ const html = String.raw`<!doctype html>
     <main class="home">
       <h1 class="screenWordmark" data-fit-wordmark>
         <span data-fit-line>studio</span>
+        <span class="desktopDash" aria-hidden="true">—</span>
         <span data-fit-line>atlas</span>
       </h1>
       <script>
@@ -95,7 +96,11 @@ body {
   display: block;
 }
 
-.screenWordmark span + span {
+.desktopDash {
+  margin-inline: 0.02em;
+}
+
+.desktopDash + span {
   margin-left: -0.12em;
 }
 
@@ -111,7 +116,11 @@ body {
     transform-origin: center top;
   }
 
-  .screenWordmark span + span {
+  .desktopDash {
+    display: none;
+  }
+
+  .desktopDash + span {
     margin-top: -0.08em;
     margin-left: 0;
   }

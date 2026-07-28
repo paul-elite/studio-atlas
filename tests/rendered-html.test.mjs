@@ -31,6 +31,7 @@ test("server-renders a single full-screen wordmark", async () => {
   const html = await response.text();
   assert.match(html, /<h1(?=[^>]*class="screenWordmark")(?=[^>]*data-fit-wordmark)[^>]*>/);
   assert.match(html, /<span[^>]*data-fit-line[^>]*>\s*studio\s*<\/span>/);
+  assert.match(html, /class="desktopDash"/);
   assert.match(html, /<span[^>]*data-fit-line[^>]*>\s*atlas\s*<\/span>/);
   assert.match(html, /class="screenWordmark"/);
   assert.match(html, /--wordmark-scale/);
@@ -68,11 +69,14 @@ test("keeps the app and static deployment aligned", async () => {
   assert.match(css, /@media \(max-width:\s*760px\)/);
   assert.match(css, /flex-direction:\s*column/);
   assert.match(css, /--line-scale/);
+  assert.match(css, /\.desktopDash/);
+  assert.match(css, /display:\s*none/);
   assert.match(css, /transform:\s*scale\(var\(--wordmark-scale,\s*1\)\)/);
   assert.doesNotMatch(css, /font-size:\s*[^;]*vw/);
   assert.match(css, /\.screenWordmark\s*\{/);
   assert.match(staticBuilder, /--background:\s*#b6ff29/);
   assert.match(staticBuilder, /data-fit-line>\s*studio/);
+  assert.match(staticBuilder, /desktopDash/);
   assert.match(staticBuilder, /data-fit-line>\s*atlas/);
   assert.match(staticBuilder, /--wordmark-scale/);
   assert.match(staticBuilder, /--line-scale/);
