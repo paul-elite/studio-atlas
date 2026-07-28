@@ -6,6 +6,9 @@
   --muted: #6f6f6f;
   --line: #e7e7e7;
   --paper: #ffffff;
+  --text-small: 0.875rem;
+  --text-base: 1rem;
+  --text-display: clamp(3.25rem, 8.6vw, 8.75rem);
 }
 
 @theme inline {
@@ -29,6 +32,8 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter-tight), Arial, Helvetica, sans-serif;
+  font-size: var(--text-base);
+  font-weight: 400;
 }
 
 a {
@@ -61,12 +66,9 @@ main {
 
 .brand,
 .navCta {
-  font-weight: 800;
+  font-size: var(--text-base);
+  font-weight: 500;
   letter-spacing: 0;
-}
-
-.brand {
-  font-size: 1.05rem;
 }
 
 .navCta {
@@ -98,8 +100,8 @@ main {
 .eyebrow {
   margin: 0 0 18px;
   color: var(--muted);
-  font-size: 0.78rem;
-  font-weight: 850;
+  font-size: var(--text-small);
+  font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -112,8 +114,8 @@ p {
 h1 {
   max-width: 1220px;
   margin-bottom: 0;
-  font-size: clamp(3.2rem, 8.6vw, 8.7rem);
-  font-weight: 820;
+  font-size: var(--text-display);
+  font-weight: 500;
   line-height: 0.92;
   letter-spacing: 0;
 }
@@ -149,13 +151,15 @@ h1 {
 }
 
 .navCard strong {
-  font-size: 1rem;
+  font-size: var(--text-base);
+  font-weight: 500;
 }
 
 .navCard span {
   align-self: end;
   color: var(--muted);
-  font-size: 0.94rem;
+  font-size: var(--text-small);
+  font-weight: 400;
   line-height: 1.35;
 }
 
@@ -170,7 +174,7 @@ h1 {
   }
 
   h1 {
-    font-size: clamp(3rem, 13vw, 5.8rem);
+    font-size: var(--text-display);
   }
 
   .navCards {
