@@ -56,10 +56,11 @@ test("keeps the app and static deployment aligned", async () => {
   assert.match(css, /font-family:\s*var\(--font-geist/);
   assert.match(css, /font-size:\s*160px/);
   assert.match(css, /font-weight:\s*600/);
-  assert.match(css, /align-items:\s*center/);
-  assert.match(css, /letter-spacing:\s*-0\.1em/);
-  assert.match(css, /word-spacing:\s*0\.06em/);
-  assert.match(css, /transform-origin:\s*left center/);
+  assert.match(css, /align-items:\s*start/);
+  assert.match(css, /justify-items:\s*center/);
+  assert.match(css, /letter-spacing:\s*-0\.06em/);
+  assert.match(css, /word-spacing:\s*-0\.12em/);
+  assert.match(css, /transform-origin:\s*center top/);
   assert.match(css, /transform:\s*scale\(var\(--wordmark-scale,\s*1\)\)/);
   assert.doesNotMatch(css, /font-size:\s*[^;]*vw/);
   assert.match(css, /\.screenWordmark\s*\{/);
