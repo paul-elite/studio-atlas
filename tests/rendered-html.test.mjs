@@ -23,18 +23,23 @@ async function render() {
   );
 }
 
-test("server-renders a blank page", async () => {
+test("server-renders the single-section Studio Atlas layout", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<body[^>]*>\s*(?:<script\b[\s\S]*)?<\/body>/i);
-  assert.doesNotMatch(html, /Studio Atlas|frontier companies|Studio range/);
-  assert.doesNotMatch(html, /<main|<section|<nav|<h1|<p>/i);
+  assert.match(html, /<title>Studio Atlas<\/title>/i);
+  assert.match(html, /class="atlasSection"/);
+  assert.match(html, /Studio Atlas/);
+  assert.match(html, /Where precise ideas/);
+  assert.match(html, /become lasting objects/);
+  assert.match(html, /product, brand, packaging, software, and hardware/);
+  assert.match(html, /class="projectStrip"/);
+  assert.doesNotMatch(html, /frontier companies|Studio range/);
 });
 
-test("keeps the app and static deployment blank", async () => {
+test("keeps the app and static deployment aligned", async () => {
   const [page, layout, css, staticBuilder] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
@@ -45,11 +50,16 @@ test("keeps the app and static deployment blank", async () => {
     ),
   ]);
 
-  assert.match(page, /return null/);
-  assert.match(layout, /const title = ""/);
-  assert.doesNotMatch(css, /hero|capabilities|discipline|engagement/i);
-  assert.doesNotMatch(
-    `${page}\n${layout}\n${css}\n${staticBuilder}`,
-    /Studio Atlas|frontier companies|Studio range/,
-  );
+  assert.match(page, /className="atlasSection"/);
+  assert.match(page, /className="wordmark"/);
+  assert.match(page, /className="projectStrip"/);
+  assert.match(layout, /const title = "Studio Atlas"/);
+  assert.match(staticBuilder, /class="atlasSection"/);
+  assert.match(staticBuilder, /readFile\("app\/globals\.css"/);
+  assert.match(css, /\.atlasNav\s*\{/);
+  assert.match(css, /\.wordmark\s*\{/);
+  assert.match(css, /\.projectStrip\s*\{/);
+  assert.doesNotMatch(css, /letter-spacing:\s*-/);
+  assert.doesNotMatch(css, /font-size:\s*[^;]*vw/);
+  assert.doesNotMatch(`${page}\n${css}\n${staticBuilder}`, /Goodside/);
 });
