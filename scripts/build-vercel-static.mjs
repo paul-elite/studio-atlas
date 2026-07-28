@@ -12,7 +12,29 @@ const html = String.raw`<!doctype html>
     <main>
       <section class="atlasSection" aria-label="Studio Atlas introduction">
         <div class="wordmark" id="top" aria-label="Studio Atlas">
-          Studio Atlas
+          <svg
+            class="wordmarkDesktop"
+            viewBox="0 0 1000 170"
+            preserveAspectRatio="none"
+            role="presentation"
+          >
+            <text x="0" y="142" textLength="1000" lengthAdjust="spacingAndGlyphs">
+              StudioAtlas
+            </text>
+          </svg>
+          <svg
+            class="wordmarkMobile"
+            viewBox="0 0 1000 340"
+            preserveAspectRatio="none"
+            role="presentation"
+          >
+            <text x="0" y="142" textLength="1000" lengthAdjust="spacingAndGlyphs">
+              Studio
+            </text>
+            <text x="0" y="312" textLength="1000" lengthAdjust="spacingAndGlyphs">
+              Atlas
+            </text>
+          </svg>
         </div>
 
         <div class="projectStrip" aria-label="Studio Atlas visual range">
@@ -42,9 +64,9 @@ const html = String.raw`<!doctype html>
 `;
 
 const appCss = await readFile("app/globals.css", "utf8");
-const css = appCss
+const css = `@import url("https://fonts.googleapis.com/css2?family=Geist:wght@900&display=swap");\n\n${appCss
   .replace(/^@import "tailwindcss";\n\n/, "")
-  .replace(/@theme inline \{[\s\S]*?\}\n\n/, "");
+  .replace(/@theme inline \{[\s\S]*?\}\n\n/, "")}`;
 
 await rm(".vercel/output", { recursive: true, force: true });
 await rm("vercel-static", { recursive: true, force: true });

@@ -3,7 +3,29 @@ export default function Home() {
     <main>
       <section className="atlasSection" aria-label="Studio Atlas introduction">
         <div className="wordmark" id="top" aria-label="Studio Atlas">
-          Studio Atlas
+          <svg
+            className="wordmarkDesktop"
+            viewBox="0 0 1000 170"
+            preserveAspectRatio="none"
+            role="presentation"
+          >
+            <text x="0" y="142" textLength="1000" lengthAdjust="spacingAndGlyphs">
+              StudioAtlas
+            </text>
+          </svg>
+          <svg
+            className="wordmarkMobile"
+            viewBox="0 0 1000 340"
+            preserveAspectRatio="none"
+            role="presentation"
+          >
+            <text x="0" y="142" textLength="1000" lengthAdjust="spacingAndGlyphs">
+              Studio
+            </text>
+            <text x="0" y="312" textLength="1000" lengthAdjust="spacingAndGlyphs">
+              Atlas
+            </text>
+          </svg>
         </div>
 
         <div className="projectStrip" aria-label="Studio Atlas visual range">
