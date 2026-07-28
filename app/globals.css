@@ -58,14 +58,25 @@ body {
 }
 
 .desktopDash {
+  display: none;
   margin-inline: 0.04em;
 }
 
 .desktopDash + span {
-  margin-left: -0.02em;
+  margin-left: 0;
 }
 
-@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+@media (min-width: 901px) and (hover: hover) and (pointer: fine) {
+  .desktopDash {
+    display: block;
+  }
+
+  .desktopDash + span {
+    margin-left: -0.02em;
+  }
+}
+
+@media (max-width: 900px), (hover: none), (any-pointer: coarse) {
   .home {
     justify-items: center;
     width: 100%;
@@ -75,10 +86,6 @@ body {
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
-  }
-
-  .desktopDash {
-    display: none;
   }
 
   .desktopDash + span {
