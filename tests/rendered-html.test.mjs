@@ -62,7 +62,8 @@ test("keeps the app and static deployment aligned", async () => {
   assert.match(layout, /const title = ""/);
   assert.match(layout, /Geist,/);
   assert.match(css, /--background:\s*#b6ff29/);
-  assert.match(css, /--page-inset:\s*clamp\(8px,\s*1vw,\s*16px\)/);
+  assert.match(css, /--page-inset:\s*24px/);
+  assert.match(css, /--mobile-title-inset:\s*12px/);
   assert.match(css, /font-family:\s*var\(--font-geist/);
   assert.match(css, /font-size:\s*160px/);
   assert.match(css, /font-weight:\s*600/);
@@ -79,7 +80,7 @@ test("keeps the app and static deployment aligned", async () => {
   assert.match(css, /align-items:\s*flex-start/);
   assert.match(css, /line-height:\s*0\.88/);
   assert.match(css, /text-align:\s*left/);
-  assert.match(css, /padding:\s*0/);
+  assert.match(css, /padding:\s*0 var\(--mobile-title-inset\)/);
   assert.match(css, /transform-origin:\s*left top/);
   assert.doesNotMatch(css, /--line-scale/);
   assert.match(css, /\.desktopDash/);
@@ -90,6 +91,7 @@ test("keeps the app and static deployment aligned", async () => {
   assert.match(staticBuilder, /--background:\s*#b6ff29/);
   assert.match(staticBuilder, /availableWidth/);
   assert.match(staticBuilder, /edgeBuffer/);
+  assert.match(staticBuilder, /isDesktop/);
   assert.match(staticBuilder, /availableWidth - edgeBuffer/);
   assert.match(staticBuilder, /paddingLeft/);
   assert.match(staticBuilder, /data-fit-line>\s*studio/);

@@ -37,7 +37,8 @@ const html = String.raw`<!doctype html>
             const availableWidth = home && style
               ? home.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight)
               : window.innerWidth;
-            const edgeBuffer = style ? parseFloat(style.paddingRight) : 16;
+            const isDesktop = desktopQuery.matches && navigator.maxTouchPoints === 0;
+            const edgeBuffer = isDesktop && style ? parseFloat(style.paddingRight) : 0;
             const width = wordmark.scrollWidth;
             if (width > 0) {
               wordmark.style.setProperty("--wordmark-scale", String((availableWidth - edgeBuffer) / width));
@@ -59,7 +60,8 @@ const css = String.raw`@import url("https://fonts.googleapis.com/css2?family=Gei
 :root {
   --background: #b6ff29;
   --foreground: #111111;
-  --page-inset: clamp(8px, 1vw, 16px);
+  --page-inset: 24px;
+  --mobile-title-inset: 12px;
 }
 
 html,
@@ -121,7 +123,7 @@ body {
 @media (max-width: 900px), (hover: none), (any-pointer: coarse) {
   .home {
     justify-items: start;
-    padding: 0;
+    padding: 0 var(--mobile-title-inset);
     width: 100%;
   }
 

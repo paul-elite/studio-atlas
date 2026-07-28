@@ -3,7 +3,8 @@
 :root {
   --background: #b6ff29;
   --foreground: #111111;
-  --page-inset: clamp(8px, 1vw, 16px);
+  --page-inset: 24px;
+  --mobile-title-inset: 12px;
 }
 
 @theme inline {
@@ -78,7 +79,7 @@ body {
 @media (max-width: 900px), (hover: none), (any-pointer: coarse) {
   .home {
     justify-items: start;
-    padding: 0;
+    padding: 0 var(--mobile-title-inset);
     width: 100%;
   }
 
