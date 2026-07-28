@@ -1,135 +1,170 @@
-const services = [
+const navItems = [
   {
-    title: "Brand Positioning",
-    copy: "Clarify your offer, message, and market point of view before the first pixel is designed.",
+    href: "#work",
+    title: "What we make",
+    copy: "Brand systems, launch pages, product surfaces, and campaign worlds.",
   },
   {
-    title: "Web Experience",
-    copy: "Premium page structure, responsive layouts, and conversion-ready sections built for iteration.",
+    href: "#services",
+    title: "Services",
+    copy: "Strategy, identity, web design, product design, and creative direction.",
   },
   {
-    title: "Launch Support",
-    copy: "A practical handoff for domains, analytics, updates, and the next round of content edits.",
+    href: "#proof",
+    title: "Studio proof",
+    copy: "Built for founders who need sharp positioning and a clear market story.",
+  },
+  {
+    href: "#contact",
+    title: "Start",
+    copy: "Bring the rough idea. We will shape the first version into something useful.",
   },
 ];
 
-const work = [
-  "Executive advisory site",
-  "Boutique studio portfolio",
-  "Professional services launch",
+const proof = [
+  {
+    name: "Atlas AI",
+    result: "Repositioned from tooling to category-defining workflow platform.",
+    metric: "Seed to Series A-ready",
+  },
+  {
+    name: "Northstar Labs",
+    result: "Created a launch identity and website for a technical founder team.",
+    metric: "4-week public launch",
+  },
+  {
+    name: "Signal Works",
+    result: "Turned a dense enterprise product into a simple buying narrative.",
+    metric: "3x demo clarity",
+  },
+];
+
+const services = [
+  "Brand strategy",
+  "Identity systems",
+  "Web design",
+  "Product UI",
+  "Launch campaigns",
+  "Creative systems",
+];
+
+const gallery = [
+  "Launch identity",
+  "Product narrative",
+  "Investor story",
+  "Website system",
+  "Campaign world",
+  "Founder deck",
 ];
 
 export default function Home() {
   return (
     <main>
-      <section className="hero">
+      <section className="hero" id="top">
         <nav className="nav" aria-label="Main navigation">
           <a className="brand" href="#top" aria-label="Go to homepage">
-            Northline Studio
+            Studio Atlas
           </a>
-          <div className="navLinks">
-            <a href="#services">Services</a>
-            <a href="#work">Work</a>
-            <a href="#contact">Contact</a>
-          </div>
+          <a className="navCta" href="#contact">
+            Work with us
+          </a>
         </nav>
 
-        <div className="heroGrid" id="top">
-          <div className="heroCopy">
-            <p className="eyebrow">Portfolio and business website starter</p>
-            <h1>A refined web presence for experts, founders, and service brands.</h1>
-            <p className="lead">
-              This first version gives you a clean premium structure that is ready
-              for domain setup, copy edits, imagery, and deeper customization.
-            </p>
-            <div className="actions">
-              <a className="primaryButton" href="#contact">
-                Start editing
-              </a>
-              <a className="secondaryButton" href="#work">
-                View structure
-              </a>
-            </div>
-          </div>
+        <div className="heroStatement">
+          <p className="eyebrow">Design studio for ambitious technical teams</p>
+          <h1>
+            We help frontier companies make complex ideas feel obvious, credible,
+            and worth caring about.
+          </h1>
+        </div>
 
-          <aside className="heroPanel" aria-label="Website launch snapshot">
-            <p className="panelLabel">Launch snapshot</p>
-            <div className="metric">
-              <span>01</span>
-              <strong>Editable starter live</strong>
-            </div>
-            <div className="metric">
-              <span>02</span>
-              <strong>Domain connection ready</strong>
-            </div>
-            <div className="metric">
-              <span>03</span>
-              <strong>Built for iterative polish</strong>
-            </div>
-          </aside>
+        <div className="navCards" aria-label="Page sections">
+          {navItems.map((item) => (
+            <a className="navCard" href={item.href} key={item.title}>
+              <strong>{item.title}</strong>
+              <span>{item.copy}</span>
+            </a>
+          ))}
         </div>
       </section>
 
-      <section className="section" id="services">
-        <div className="sectionHeader">
-          <p className="eyebrow">Core sections</p>
-          <h2>Everything needed for a credible first launch.</h2>
+      <section className="intro section">
+        <div className="sectionKicker">Our point of view</div>
+        <div className="introCopy">
+          <h2>
+            Great design work starts by getting uncomfortably close to the problem.
+          </h2>
+          <p>
+            Studio Atlas works with founders, operators, and product teams building
+            things that are hard to explain at first glance. We study the market,
+            the user, the technology, and the decision path, then turn that into
+            brand, web, product, and launch systems people can understand quickly.
+          </p>
+          <p>
+            You get a focused senior creative relationship, not a bloated process.
+            The result is a sharper story, a more distinctive visual world, and a
+            website that can keep evolving after launch.
+          </p>
         </div>
-        <div className="serviceGrid">
-          {services.map((service) => (
-            <article className="serviceCard" key={service.title}>
-              <h3>{service.title}</h3>
-              <p>{service.copy}</p>
+      </section>
+
+      <section className="proof section" id="proof">
+        <div className="sectionHeader">
+          <p className="eyebrow">Early partners</p>
+          <h2>Built for teams that need to look as serious as the thing they are building.</h2>
+        </div>
+        <div className="proofGrid">
+          {proof.map((item) => (
+            <article className="proofCard" key={item.name}>
+              <div>
+                <h3>{item.name}</h3>
+                <p>{item.result}</p>
+              </div>
+              <strong>{item.metric}</strong>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="featureBand" id="work">
-        <div>
-          <p className="eyebrow">Selected work placeholders</p>
-          <h2>Structured for case studies, proof points, and trust signals.</h2>
+      <section className="servicesBand" id="services">
+        <div className="servicesIntro">
+          <p className="eyebrow">Services</p>
+          <h2>Strategy is the anchor. Visual craft is how people feel it.</h2>
         </div>
-        <div className="workList">
-          {work.map((item) => (
-            <div className="workItem" key={item}>
-              <span>{item}</span>
-              <small>Ready to customize</small>
-            </div>
+        <div className="serviceList">
+          {services.map((service) => (
+            <span key={service}>{service}</span>
           ))}
         </div>
       </section>
 
-      <section className="section split">
-        <div>
-          <p className="eyebrow">Process</p>
-          <h2>A practical path from starter site to polished brand home.</h2>
+      <section className="gallery section" id="work">
+        <div className="sectionHeader">
+          <p className="eyebrow">What we make</p>
+          <h2>Systems, pages, and launch materials that make the work easier to believe.</h2>
         </div>
-        <ol className="steps">
-          <li>
-            <span>1</span>
-            <p>Replace placeholder content with the real business name, offers, and audience.</p>
-          </li>
-          <li>
-            <span>2</span>
-            <p>Add final imagery, testimonials, case studies, and conversion goals.</p>
-          </li>
-          <li>
-            <span>3</span>
-            <p>Connect the domain after the registrar and DNS records are confirmed.</p>
-          </li>
-        </ol>
+        <div className="visualGrid">
+          {gallery.map((item, index) => (
+            <article className={`visualTile tile${index + 1}`} key={item}>
+              <span>{item}</span>
+            </article>
+          ))}
+        </div>
       </section>
 
-      <section className="cta" id="contact">
-        <p className="eyebrow">Next edit</p>
-        <h2>Send the domain name and registrar when you are ready to connect it.</h2>
-        <p>
-          No DNS records need to be changed yet. Once the domain details are known,
-          the site can provide the exact records to add.
-        </p>
-        <a className="primaryButton" href="mailto:hello@example.com">
-          hello@example.com
+      <section className="quoteBand">
+        <blockquote>
+          "The job is not to make advanced work feel smaller. It is to make it
+          legible enough that the right people can step toward it."
+        </blockquote>
+        <p>Studio Atlas</p>
+      </section>
+
+      <section className="contact section" id="contact">
+        <p className="eyebrow">Let us build the first version</p>
+        <h2>Bring the product, the audience, and the messy notes. We will turn them into a site people can understand.</h2>
+        <a className="primaryButton" href="mailto:hello@studioatlas.work">
+          hello@studioatlas.work
         </a>
       </section>
     </main>

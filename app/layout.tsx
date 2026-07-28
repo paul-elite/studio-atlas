@@ -18,9 +18,9 @@ export async function generateMetadata(): Promise<Metadata> {
   const host = headerStore.get("x-forwarded-host") ?? headerStore.get("host");
   const protocol = headerStore.get("x-forwarded-proto") ?? "https";
   const origin = host ? `${protocol}://${host}` : "https://example.com";
-  const title = "Northline Studio | Premium Portfolio Website";
+  const title = "Studio Atlas | Design Studio for Frontier Teams";
   const description =
-    "A polished editable portfolio and business website starter for premium service brands.";
+    "Studio Atlas helps ambitious technical teams turn complex products into clear brands, websites, and launch systems.";
 
   return {
     title,
@@ -39,7 +39,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: new URL("/og.png", origin).toString(),
           width: 1200,
           height: 630,
-          alt: "Northline Studio premium portfolio website preview",
+          alt: "Studio Atlas design studio website preview",
         },
       ],
     },
