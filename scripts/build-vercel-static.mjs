@@ -120,7 +120,7 @@ body {
 
 @media (max-width: 900px), (hover: none), (any-pointer: coarse) {
   .home {
-    justify-items: center;
+    justify-items: start;
     padding: 0;
     width: 100%;
   }
@@ -130,7 +130,7 @@ body {
     align-items: flex-start;
     line-height: 0.88;
     text-align: left;
-    transform-origin: center top;
+    transform-origin: left top;
   }
 
   .desktopDash + span {

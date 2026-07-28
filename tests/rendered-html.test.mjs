@@ -80,7 +80,7 @@ test("keeps the app and static deployment aligned", async () => {
   assert.match(css, /line-height:\s*0\.88/);
   assert.match(css, /text-align:\s*left/);
   assert.match(css, /padding:\s*0/);
-  assert.match(css, /transform-origin:\s*center top/);
+  assert.match(css, /transform-origin:\s*left top/);
   assert.doesNotMatch(css, /--line-scale/);
   assert.match(css, /\.desktopDash/);
   assert.match(css, /display:\s*none/);
