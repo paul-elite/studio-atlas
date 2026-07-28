@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter_Tight } from "next/font/google";
+import { Geist_Mono, Inter_Tight } from "next/font/google";
 import { headers } from "next/headers";
 import "./globals.css";
 
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
-  subsets: ["latin"],
-});
-
-const geist = Geist({
-  variable: "--font-geist",
   subsets: ["latin"],
 });
 
@@ -23,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const host = headerStore.get("x-forwarded-host") ?? headerStore.get("host");
   const protocol = headerStore.get("x-forwarded-proto") ?? "https";
   const origin = host ? `${protocol}://${host}` : "https://example.com";
-  const title = "Studio Atlas";
+  const title = "";
   const description = "";
 
   return {
@@ -43,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: new URL("/og.png", origin).toString(),
           width: 1200,
           height: 630,
-          alt: "Studio Atlas website preview",
+          alt: "",
         },
       ],
     },
@@ -64,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${interTight.variable} ${geist.variable} ${geistMono.variable} antialiased`}
+        className={`${interTight.variable} ${geistMono.variable} antialiased`}
       >
         {children}
       </body>
