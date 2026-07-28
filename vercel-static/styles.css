@@ -52,7 +52,7 @@ body {
   margin-left: -0.02em;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
   .home {
     justify-items: center;
     width: 100%;

@@ -66,7 +66,7 @@ test("keeps the app and static deployment aligned", async () => {
   assert.match(css, /letter-spacing:\s*-0\.06em/);
   assert.match(css, /word-spacing:\s*-0\.12em/);
   assert.match(css, /transform-origin:\s*center top/);
-  assert.match(css, /@media \(max-width:\s*900px\)/);
+  assert.match(css, /@media \(max-width:\s*900px\), \(hover:\s*none\) and \(pointer:\s*coarse\)/);
   assert.match(css, /flex-direction:\s*column/);
   assert.match(css, /overflow-x:\s*hidden/);
   assert.match(css, /align-items:\s*flex-start/);
