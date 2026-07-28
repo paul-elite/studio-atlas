@@ -41,8 +41,8 @@ const html = String.raw`<!doctype html>
 
           <aside class="proofBlock" aria-label="Studio credibility">
             <p>
-              "Trusted to turn technical products into clear brands, launch
-              pages, and digital systems."
+              Trusted to turn technical products into clear brands, launch
+              pages, and digital systems.
             </p>
             <span>Studio Atlas</span>
           </aside>
@@ -61,15 +61,82 @@ const html = String.raw`<!doctype html>
                 <em>See approach</em>
               </a>
               <a href="mailto:hello@studioatlas.work">
-                <strong>Launch pages that make the pitch clear</strong>
+                <strong>Packaging that carries the product story</strong>
                 <em>View format</em>
               </a>
               <a href="mailto:hello@studioatlas.work">
-                <strong>Product surfaces for complex workflows</strong>
+                <strong>Interfaces for complex workflows</strong>
                 <em>Start a project</em>
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section class="capabilities" id="capabilities">
+        <div class="sectionHeader">
+          <p class="eyebrow">Studio range</p>
+          <h2>
+            One studio for the moments where brand, product, packaging,
+            software, and hardware have to move together.
+          </h2>
+        </div>
+
+        <div class="disciplineGrid" aria-label="Studio disciplines">
+          <article class="discipline">
+            <span>01</span>
+            <h3>Product</h3>
+            <p>
+              Positioning, experience architecture, launch narratives, and
+              systems for products that need to be understood quickly.
+            </p>
+          </article>
+          <article class="discipline">
+            <span>02</span>
+            <h3>Brand</h3>
+            <p>
+              Identity, language, campaign direction, and visual systems built
+              to hold up across product, sales, and investor moments.
+            </p>
+          </article>
+          <article class="discipline">
+            <span>03</span>
+            <h3>Packaging</h3>
+            <p>
+              Structure, shelf presence, unboxing, labeling, and
+              production-ready assets for physical products entering the market.
+            </p>
+          </article>
+          <article class="discipline">
+            <span>04</span>
+            <h3>Software</h3>
+            <p>
+              Interfaces, prototypes, dashboards, websites, and design systems
+              for workflows where clarity is a competitive advantage.
+            </p>
+          </article>
+          <article class="discipline">
+            <span>05</span>
+            <h3>Hardware</h3>
+            <p>
+              Industrial design direction, product storytelling, environmental
+              moments, and launch surfaces around technical objects.
+            </p>
+          </article>
+        </div>
+
+        <div class="engagement">
+          <div>
+            <p class="eyebrow">Engagements</p>
+            <h2>Built for technical teams moving from invention to market.</h2>
+          </div>
+          <ul aria-label="Common Studio Atlas engagement types">
+            <li>New venture identities</li>
+            <li>Product and web launches</li>
+            <li>Packaging systems</li>
+            <li>Software experience design</li>
+            <li>Hardware market entry</li>
+          </ul>
         </div>
       </section>
     </main>
@@ -85,8 +152,11 @@ const css = String.raw`@import url("https://fonts.googleapis.com/css2?family=Int
   --muted: #6f6f6f;
   --line: #e7e7e7;
   --paper: #ffffff;
+  --ink-soft: #f4f4f1;
+  --accent: #c63f28;
   --text-small: 0.875rem;
   --text-base: 1rem;
+  --text-section: clamp(2rem, 4.8vw, 5rem);
   --text-display: clamp(3.25rem, 8.6vw, 8.75rem);
 }
 
@@ -280,6 +350,106 @@ h1 {
   padding-top: 18px;
 }
 
+.capabilities {
+  display: grid;
+  gap: 64px;
+  max-width: 1280px;
+  width: calc(100% - 48px);
+  margin: 0 auto;
+  padding: 96px 0 112px;
+}
+
+.sectionHeader {
+  display: grid;
+  grid-template-columns: minmax(140px, 0.24fr) minmax(0, 1fr);
+  gap: 24px;
+  border-top: 1px solid var(--foreground);
+  padding-top: 22px;
+}
+
+h2,
+h3 {
+  margin-top: 0;
+  letter-spacing: 0;
+}
+
+h2 {
+  max-width: 1060px;
+  margin-bottom: 0;
+  font-size: var(--text-section);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.disciplineGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.discipline {
+  display: grid;
+  align-content: start;
+  gap: 28px;
+  min-height: 360px;
+  padding: 18px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.discipline span {
+  color: var(--accent);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.discipline h3 {
+  margin-bottom: 0;
+  font-size: clamp(1.75rem, 3vw, 3.5rem);
+  font-weight: 500;
+  line-height: 0.95;
+}
+
+.discipline p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: var(--text-base);
+  line-height: 1.4;
+}
+
+.engagement {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(280px, 0.55fr);
+  gap: 48px;
+  align-items: end;
+  padding: 28px;
+  background: var(--ink-soft);
+}
+
+.engagement h2 {
+  max-width: 760px;
+}
+
+.engagement ul {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid color-mix(in srgb, var(--foreground) 18%, transparent);
+}
+
+.engagement li {
+  padding: 16px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--foreground) 18%, transparent);
+  font-size: var(--text-base);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
 @media (max-width: 900px) {
   .hero {
     min-height: auto;
@@ -315,6 +485,34 @@ h1 {
 
   .updatesList a {
     gap: 8px;
+  }
+
+  .capabilities {
+    width: calc(100% - 36px);
+    gap: 44px;
+    padding: 64px 0 84px;
+  }
+
+  .sectionHeader,
+  .engagement {
+    grid-template-columns: 1fr;
+  }
+
+  .disciplineGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .discipline {
+    min-height: 0;
+    gap: 20px;
+    padding: 18px 0;
+    border-right: 0;
+    background: transparent;
+  }
+
+  .engagement {
+    gap: 32px;
+    padding: 22px 18px;
   }
 }
 `;
