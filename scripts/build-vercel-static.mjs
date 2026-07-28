@@ -63,10 +63,10 @@ body {
   font-family: "Geist", Arial, Helvetica, sans-serif;
   font-size: 160px;
   font-weight: 600;
-  letter-spacing: 0;
+  letter-spacing: -0.06em;
   line-height: 0.82;
   white-space: nowrap;
-  word-spacing: -0.42em;
+  word-spacing: 0.06em;
   transform: scale(var(--wordmark-scale, 1));
   transform-origin: left top;
 }
