@@ -121,6 +121,7 @@ body {
 @media (max-width: 900px), (hover: none), (any-pointer: coarse) {
   .home {
     justify-items: center;
+    padding: 0;
     width: 100%;
   }
 
