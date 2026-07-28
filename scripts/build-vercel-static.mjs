@@ -82,11 +82,11 @@ body {
 }
 
 .desktopDash {
-  margin-inline: 0.02em;
+  margin-inline: 0.04em;
 }
 
 .desktopDash + span {
-  margin-left: -0.12em;
+  margin-left: 0;
 }
 
 @media (max-width: 760px) {
