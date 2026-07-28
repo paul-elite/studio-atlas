@@ -88,7 +88,8 @@ test("keeps the app and static deployment aligned", async () => {
   assert.match(css, /\.screenWordmark\s*\{/);
   assert.match(staticBuilder, /--background:\s*#b6ff29/);
   assert.match(staticBuilder, /availableWidth/);
-  assert.match(staticBuilder, /availableWidth - 1/);
+  assert.match(staticBuilder, /edgeBuffer/);
+  assert.match(staticBuilder, /availableWidth - edgeBuffer/);
   assert.match(staticBuilder, /paddingLeft/);
   assert.match(staticBuilder, /data-fit-line>\s*studio/);
   assert.match(staticBuilder, /desktopDash/);

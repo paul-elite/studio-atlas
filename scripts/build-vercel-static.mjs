@@ -37,9 +37,10 @@ const html = String.raw`<!doctype html>
             const availableWidth = home && style
               ? home.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight)
               : window.innerWidth;
+            const edgeBuffer = style ? parseFloat(style.paddingRight) : 16;
             const width = wordmark.scrollWidth;
             if (width > 0) {
-              wordmark.style.setProperty("--wordmark-scale", String((availableWidth - 1) / width));
+              wordmark.style.setProperty("--wordmark-scale", String((availableWidth - edgeBuffer) / width));
             }
           };
           document.fonts?.ready.then(fit);
