@@ -10,17 +10,7 @@ const html = String.raw`<!doctype html>
   </head>
   <body>
     <main class="home">
-      <h1 class="screenWordmark" aria-label="studio atlas">
-        <svg
-          viewBox="0 0 1000 180"
-          preserveAspectRatio="none"
-          role="presentation"
-        >
-          <text x="0" y="148" textLength="1000" lengthAdjust="spacingAndGlyphs">
-            studio atlas
-          </text>
-        </svg>
-      </h1>
+      <h1 class="screenWordmark">studio atlas</h1>
     </main>
   </body>
 </html>
@@ -54,25 +44,18 @@ body {
 .screenWordmark {
   width: 100%;
   margin: 0;
-}
-
-.screenWordmark svg {
-  display: block;
-  width: 100%;
-  height: 180px;
-  fill: var(--foreground);
-}
-
-.screenWordmark text {
   font-family: "Geist", Arial, Helvetica, sans-serif;
-  font-size: 166px;
+  font-size: 15.5vw;
   font-weight: 900;
   letter-spacing: 0;
+  line-height: 0.82;
+  text-align: center;
+  white-space: nowrap;
 }
 
 @media (max-width: 760px) {
-  .screenWordmark svg {
-    height: 110px;
+  .screenWordmark {
+    font-size: 15.3vw;
   }
 }
 `;

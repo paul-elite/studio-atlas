@@ -29,11 +29,10 @@ test("server-renders a single full-screen wordmark", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /aria-label="studio atlas"/);
-  assert.match(html, /<text[^>]*textLength="1000"[^>]*>\s*studio atlas\s*<\/text>/);
+  assert.match(html, /<h1 class="screenWordmark">\s*studio atlas\s*<\/h1>/);
   assert.match(html, /class="screenWordmark"/);
   assert.doesNotMatch(html, /projectStrip|atlasSection|StudioAtlas|Studio Atlas/);
-  assert.doesNotMatch(html, /<section|<nav|<p/i);
+  assert.doesNotMatch(html, /textLength|lengthAdjust|<svg|<section|<nav|<p/i);
 });
 
 test("keeps the app and static deployment aligned", async () => {
@@ -48,15 +47,17 @@ test("keeps the app and static deployment aligned", async () => {
   ]);
 
   assert.match(page, /studio atlas/);
-  assert.match(page, /textLength="1000"/);
+  assert.doesNotMatch(page, /textLength|lengthAdjust|<svg/);
   assert.match(layout, /const title = ""/);
   assert.match(layout, /Geist,/);
   assert.match(css, /--background:\s*#41de03/);
   assert.match(css, /font-family:\s*var\(--font-geist/);
+  assert.match(css, /font-size:\s*15\.5vw/);
   assert.match(css, /\.screenWordmark\s*\{/);
   assert.match(staticBuilder, /--background:\s*#41de03/);
   assert.match(staticBuilder, /studio atlas/);
   assert.match(staticBuilder, /fonts\.googleapis\.com\/css2\?family=Geist/);
+  assert.doesNotMatch(staticBuilder, /textLength|lengthAdjust|<svg/);
   assert.doesNotMatch(css, /projectStrip|atlasSection/i);
   assert.doesNotMatch(
     `${page}\n${layout}\n${css}\n${staticBuilder}`,
