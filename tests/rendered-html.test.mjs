@@ -57,7 +57,8 @@ test("keeps the app and static deployment aligned", async () => {
   assert.match(page, /data-fit-wordmark/);
   assert.match(page, /data-fit-line/);
   assert.match(page, /style=\{\{ display: "none" \}\}/);
-  assert.match(page, /desktopQuery\.matches \? "block" : "none"/);
+  assert.match(page, /navigator\.maxTouchPoints > 0/);
+  assert.match(page, /desktopQuery\.matches && !hasTouch \? "block" : "none"/);
   assert.match(layout, /const title = ""/);
   assert.match(layout, /Geist,/);
   assert.match(css, /--background:\s*#b6ff29/);
@@ -74,6 +75,7 @@ test("keeps the app and static deployment aligned", async () => {
   assert.match(css, /flex-direction:\s*column/);
   assert.match(css, /overflow-x:\s*hidden/);
   assert.match(css, /align-items:\s*flex-start/);
+  assert.match(css, /line-height:\s*0\.88/);
   assert.match(css, /text-align:\s*left/);
   assert.doesNotMatch(css, /--line-scale/);
   assert.match(css, /\.desktopDash/);
@@ -85,7 +87,8 @@ test("keeps the app and static deployment aligned", async () => {
   assert.match(staticBuilder, /data-fit-line>\s*studio/);
   assert.match(staticBuilder, /desktopDash/);
   assert.match(staticBuilder, /style="display: none"/);
-  assert.match(staticBuilder, /desktopQuery\.matches \? "block" : "none"/);
+  assert.match(staticBuilder, /navigator\.maxTouchPoints > 0/);
+  assert.match(staticBuilder, /desktopQuery\.matches && !hasTouch \? "block" : "none"/);
   assert.match(staticBuilder, /data-fit-line>\s*atlas/);
   assert.match(staticBuilder, /--wordmark-scale/);
   assert.doesNotMatch(staticBuilder, /--line-scale/);

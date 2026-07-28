@@ -21,7 +21,8 @@ export default function Home() {
   const updateDash = () => {
     const dash = document.querySelector("[data-fit-wordmark] .desktopDash");
     if (dash) {
-      dash.style.display = desktopQuery.matches ? "block" : "none";
+      const hasTouch = navigator.maxTouchPoints > 0;
+      dash.style.display = desktopQuery.matches && !hasTouch ? "block" : "none";
     }
   };
 

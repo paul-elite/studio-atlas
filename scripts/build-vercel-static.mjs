@@ -22,7 +22,8 @@ const html = String.raw`<!doctype html>
           const updateDash = () => {
             const dash = document.querySelector("[data-fit-wordmark] .desktopDash");
             if (dash) {
-              dash.style.display = desktopQuery.matches ? "block" : "none";
+              const hasTouch = navigator.maxTouchPoints > 0;
+              dash.style.display = desktopQuery.matches && !hasTouch ? "block" : "none";
             }
           };
 
@@ -117,11 +118,12 @@ body {
   .screenWordmark {
     flex-direction: column;
     align-items: flex-start;
+    line-height: 0.88;
     text-align: left;
   }
 
   .desktopDash + span {
-    margin-top: -0.08em;
+    margin-top: -0.03em;
     margin-left: 0;
   }
 }
