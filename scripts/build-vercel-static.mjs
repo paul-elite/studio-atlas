@@ -87,7 +87,7 @@ body {
 }
 
 .desktopDash + span {
-  margin-left: 0;
+  margin-left: -0.02em;
 }
 
 @media (max-width: 900px) {
