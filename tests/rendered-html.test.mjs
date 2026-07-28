@@ -23,42 +23,33 @@ async function render() {
   );
 }
 
-test("server-renders the Studio Atlas homepage", async () => {
+test("server-renders a blank page", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(
-    html,
-    /<title>Studio Atlas \| Design Studio for Frontier Teams<\/title>/i,
-  );
-  assert.match(html, /We help frontier companies/);
-  assert.match(html, /Studio range/);
-  assert.match(html, /product, packaging, software, and hardware/);
-  assert.match(html, /Packaging systems/);
-  assert.match(html, /Hardware market entry/);
-  assert.doesNotMatch(html, /Codex/);
-  assert.doesNotMatch(html, /Your site is taking shape/);
+  assert.match(html, /<body[^>]*>\s*(?:<script\b[\s\S]*)?<\/body>/i);
+  assert.doesNotMatch(html, /Studio Atlas|frontier companies|Studio range/);
+  assert.doesNotMatch(html, /<main|<section|<nav|<h1|<p>/i);
 });
 
-test("keeps the Studio Atlas content and styling in sync", async () => {
-  const [css, page, layout] = await Promise.all([
-    readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
+test("keeps the app and static deployment blank", async () => {
+  const [page, layout, css, staticBuilder] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
+    readFile(
+      new URL("../scripts/build-vercel-static.mjs", import.meta.url),
+      "utf8",
+    ),
   ]);
 
-  assert.match(page, /const disciplines = \[/);
-  assert.match(page, /name: "Product"/);
-  assert.match(page, /name: "Brand"/);
-  assert.match(page, /name: "Packaging"/);
-  assert.match(page, /name: "Software"/);
-  assert.match(page, /name: "Hardware"/);
-  assert.match(css, /\.capabilities\s*\{/);
-  assert.match(css, /\.disciplineGrid\s*\{/);
-  assert.match(css, /@media \(max-width: 900px\)/);
-  assert.match(layout, /Studio Atlas \| Design Studio for Frontier Teams/);
-  assert.doesNotMatch(page, /SkeletonPreview|react-loading-skeleton/);
-  assert.doesNotMatch(css, /gradient|bokeh|orb/i);
+  assert.match(page, /return null/);
+  assert.match(layout, /const title = ""/);
+  assert.doesNotMatch(css, /hero|capabilities|discipline|engagement/i);
+  assert.doesNotMatch(
+    `${page}\n${layout}\n${css}\n${staticBuilder}`,
+    /Studio Atlas|frontier companies|Studio range/,
+  );
 });
