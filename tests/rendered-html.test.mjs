@@ -52,7 +52,7 @@ test("keeps the app and static deployment aligned", async () => {
   assert.match(page, /data-fit-wordmark/);
   assert.match(layout, /const title = ""/);
   assert.match(layout, /Geist,/);
-  assert.match(css, /--background:\s*#41de03/);
+  assert.match(css, /--background:\s*#b6ff29/);
   assert.match(css, /font-family:\s*var\(--font-geist/);
   assert.match(css, /font-size:\s*160px/);
   assert.match(css, /font-weight:\s*600/);
@@ -63,7 +63,7 @@ test("keeps the app and static deployment aligned", async () => {
   assert.match(css, /transform:\s*scale\(var\(--wordmark-scale,\s*1\)\)/);
   assert.doesNotMatch(css, /font-size:\s*[^;]*vw/);
   assert.match(css, /\.screenWordmark\s*\{/);
-  assert.match(staticBuilder, /--background:\s*#41de03/);
+  assert.match(staticBuilder, /--background:\s*#b6ff29/);
   assert.match(staticBuilder, /studio atlas/);
   assert.match(staticBuilder, /--wordmark-scale/);
   assert.match(staticBuilder, /fonts\.googleapis\.com\/css2\?family=Geist:wght@600/);

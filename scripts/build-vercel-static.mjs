@@ -35,7 +35,7 @@ const html = String.raw`<!doctype html>
 const css = String.raw`@import url("https://fonts.googleapis.com/css2?family=Geist:wght@600&display=swap");
 
 :root {
-  --background: #41de03;
+  --background: #b6ff29;
   --foreground: #111111;
 }
 
