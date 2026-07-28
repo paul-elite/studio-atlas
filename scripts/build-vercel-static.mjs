@@ -1,4 +1,4 @@
-import { mkdir, copyFile, writeFile } from "node:fs/promises";
+import { mkdir, copyFile, rm, writeFile } from "node:fs/promises";
 
 const html = String.raw`<!doctype html>
 <html lang="en">
@@ -244,8 +244,18 @@ h1 {
 }
 `;
 
+await rm(".vercel/output", { recursive: true, force: true });
 await mkdir("vercel-static", { recursive: true });
+await mkdir(".vercel/output/static", { recursive: true });
 await writeFile("vercel-static/index.html", html);
 await writeFile("vercel-static/styles.css", css);
 await copyFile("public/og.png", "vercel-static/og.png");
 await copyFile("public/favicon.svg", "vercel-static/favicon.svg");
+await writeFile(".vercel/output/static/index.html", html);
+await writeFile(".vercel/output/static/styles.css", css);
+await copyFile("public/og.png", ".vercel/output/static/og.png");
+await copyFile("public/favicon.svg", ".vercel/output/static/favicon.svg");
+await writeFile(
+  ".vercel/output/config.json",
+  `${JSON.stringify({ version: 3 }, null, 2)}\n`,
+);
