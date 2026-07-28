@@ -38,6 +38,7 @@ body {
 }
 
 .screenWordmark {
+  display: flex;
   width: max-content;
   margin: 0;
   font-family: var(--font-geist, "Geist"), Arial, Helvetica, sans-serif;
@@ -49,4 +50,30 @@ body {
   word-spacing: -0.12em;
   transform: scale(var(--wordmark-scale, 1));
   transform-origin: center top;
+}
+
+.screenWordmark span {
+  display: block;
+}
+
+.screenWordmark span + span {
+  margin-left: -0.12em;
+}
+
+@media (max-width: 760px) {
+  .screenWordmark {
+    flex-direction: column;
+    align-items: center;
+    transform: none;
+  }
+
+  .screenWordmark span {
+    transform: scale(var(--line-scale, 1));
+    transform-origin: center top;
+  }
+
+  .screenWordmark span + span {
+    margin-top: -0.08em;
+    margin-left: 0;
+  }
 }
