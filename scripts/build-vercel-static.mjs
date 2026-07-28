@@ -89,7 +89,7 @@ body {
   margin-left: 0;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   .screenWordmark {
     flex-direction: column;
     align-items: center;
