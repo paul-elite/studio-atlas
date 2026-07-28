@@ -10,7 +10,23 @@ const html = String.raw`<!doctype html>
   </head>
   <body>
     <main class="home">
-      <h1 class="screenWordmark">studio atlas</h1>
+      <h1 class="screenWordmark" data-fit-wordmark>studio atlas</h1>
+      <script>
+        (() => {
+          const fit = () => {
+            const wordmark = document.querySelector("[data-fit-wordmark]");
+            if (!wordmark) return;
+            wordmark.style.setProperty("--wordmark-scale", "1");
+            const width = wordmark.scrollWidth;
+            if (width > 0) {
+              wordmark.style.setProperty("--wordmark-scale", String(window.innerWidth / width));
+            }
+          };
+          document.fonts?.ready.then(fit);
+          window.addEventListener("resize", fit, { passive: true });
+          fit();
+        })();
+      </script>
     </main>
   </body>
 </html>
@@ -42,22 +58,17 @@ body {
 }
 
 .screenWordmark {
-  width: 100%;
+  width: max-content;
   margin: 0;
   font-family: "Geist", Arial, Helvetica, sans-serif;
-  font-size: 15.5vw;
+  font-size: 160px;
   font-weight: 600;
   letter-spacing: 0;
   line-height: 0.82;
-  text-align: center;
   white-space: nowrap;
-  word-spacing: -0.24em;
-}
-
-@media (max-width: 760px) {
-  .screenWordmark {
-    font-size: 15.3vw;
-  }
+  word-spacing: -0.42em;
+  transform: scale(var(--wordmark-scale, 1));
+  transform-origin: left top;
 }
 `;
 
