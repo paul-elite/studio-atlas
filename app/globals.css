@@ -9,6 +9,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter-tight);
+  --font-geist-sans: var(--font-geist);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -26,4 +27,36 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter-tight), Arial, Helvetica, sans-serif;
+}
+
+.home {
+  display: grid;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.screenWordmark {
+  width: 100%;
+  margin: 0;
+}
+
+.screenWordmark svg {
+  display: block;
+  width: 100%;
+  height: 180px;
+  fill: var(--foreground);
+}
+
+.screenWordmark text {
+  font-family: var(--font-geist, "Geist"), Arial, Helvetica, sans-serif;
+  font-size: 166px;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+@media (max-width: 760px) {
+  .screenWordmark svg {
+    height: 110px;
+  }
 }

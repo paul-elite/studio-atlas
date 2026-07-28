@@ -23,18 +23,20 @@ async function render() {
   );
 }
 
-test("server-renders a blank page", async () => {
+test("server-renders a single full-screen wordmark", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<body[^>]*>\s*(?:<script\b[\s\S]*)?<\/body>/i);
-  assert.doesNotMatch(html, /Studio Atlas|StudioAtlas|projectStrip|wordmark/);
-  assert.doesNotMatch(html, /<main|<section|<nav|<h1|<p|<svg/i);
+  assert.match(html, /aria-label="studio atlas"/);
+  assert.match(html, /<text[^>]*textLength="1000"[^>]*>\s*studio atlas\s*<\/text>/);
+  assert.match(html, /class="screenWordmark"/);
+  assert.doesNotMatch(html, /projectStrip|atlasSection|StudioAtlas|Studio Atlas/);
+  assert.doesNotMatch(html, /<section|<nav|<p/i);
 });
 
-test("keeps the app and static deployment blank", async () => {
+test("keeps the app and static deployment aligned", async () => {
   const [page, layout, css, staticBuilder] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
@@ -45,13 +47,19 @@ test("keeps the app and static deployment blank", async () => {
     ),
   ]);
 
-  assert.match(page, /return null/);
+  assert.match(page, /studio atlas/);
+  assert.match(page, /textLength="1000"/);
   assert.match(layout, /const title = ""/);
+  assert.match(layout, /Geist,/);
   assert.match(css, /--background:\s*#41de03/);
+  assert.match(css, /font-family:\s*var\(--font-geist/);
+  assert.match(css, /\.screenWordmark\s*\{/);
   assert.match(staticBuilder, /--background:\s*#41de03/);
-  assert.doesNotMatch(css, /wordmark|projectStrip|atlasSection/i);
+  assert.match(staticBuilder, /studio atlas/);
+  assert.match(staticBuilder, /fonts\.googleapis\.com\/css2\?family=Geist/);
+  assert.doesNotMatch(css, /projectStrip|atlasSection/i);
   assert.doesNotMatch(
     `${page}\n${layout}\n${css}\n${staticBuilder}`,
-    /Studio Atlas|StudioAtlas|projectStrip|wordmark/,
+    /Studio Atlas|StudioAtlas|projectStrip|atlasSection/,
   );
 });
