@@ -1,23 +1,15 @@
-const navItems = [
+const updates = [
   {
-    href: "mailto:hello@studioatlas.work",
-    title: "What we make",
-    copy: "Brand systems, launch pages, product surfaces, and campaign worlds.",
+    title: "Brand systems for technical products",
+    action: "See approach",
   },
   {
-    href: "mailto:hello@studioatlas.work",
-    title: "Services",
-    copy: "Strategy, identity, web design, product design, and creative direction.",
+    title: "Launch pages that make the pitch clear",
+    action: "View format",
   },
   {
-    href: "mailto:hello@studioatlas.work",
-    title: "Studio proof",
-    copy: "Built for founders who need sharp positioning and a clear market story.",
-  },
-  {
-    href: "mailto:hello@studioatlas.work",
-    title: "Start",
-    copy: "Bring the rough idea. We will shape the first version into something useful.",
+    title: "Product surfaces for complex workflows",
+    action: "Start a project",
   },
 ];
 
@@ -34,21 +26,40 @@ export default function Home() {
           </a>
         </nav>
 
-        <div className="heroStatement">
-          <p className="eyebrow">Design studio for ambitious technical teams</p>
-          <h1>
-            We help frontier companies make complex ideas feel obvious, credible,
-            and worth caring about.
-          </h1>
-        </div>
+        <div className="heroGrid">
+          <div className="introBlock">
+            <p className="eyebrow">Introduction</p>
+            <h1>
+              We help frontier companies make complex ideas feel obvious,
+              credible, and worth caring about.
+            </h1>
+          </div>
 
-        <div className="navCards" aria-label="Page sections">
-          {navItems.map((item) => (
-            <a className="navCard" href={item.href} key={item.title}>
-              <strong>{item.title}</strong>
-              <span>{item.copy}</span>
-            </a>
-          ))}
+          <aside className="proofBlock" aria-label="Studio credibility">
+            <p>
+              "Trusted to turn technical products into clear brands, launch
+              pages, and digital systems."
+            </p>
+            <span>Studio Atlas</span>
+          </aside>
+
+          <a className="latestBlock" href="mailto:hello@studioatlas.work">
+            <span>Latest</span>
+            <strong>Now shaping Studio Atlas for launch</strong>
+            <em>Learn more</em>
+          </a>
+
+          <div className="updatesBlock" aria-label="Updates">
+            <span>Updates</span>
+            <div className="updatesList">
+              {updates.map((item) => (
+                <a href="mailto:hello@studioatlas.work" key={item.title}>
+                  <strong>{item.title}</strong>
+                  <em>{item.action}</em>
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
     </main>
