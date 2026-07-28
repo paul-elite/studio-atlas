@@ -68,7 +68,8 @@ test("keeps the app and static deployment aligned", async () => {
   assert.match(css, /transform-origin:\s*center top/);
   assert.match(css, /@media \(max-width:\s*760px\)/);
   assert.match(css, /flex-direction:\s*column/);
-  assert.match(css, /--line-scale/);
+  assert.match(css, /text-align:\s*center/);
+  assert.doesNotMatch(css, /--line-scale/);
   assert.match(css, /\.desktopDash/);
   assert.match(css, /display:\s*none/);
   assert.match(css, /transform:\s*scale\(var\(--wordmark-scale,\s*1\)\)/);
@@ -79,7 +80,7 @@ test("keeps the app and static deployment aligned", async () => {
   assert.match(staticBuilder, /desktopDash/);
   assert.match(staticBuilder, /data-fit-line>\s*atlas/);
   assert.match(staticBuilder, /--wordmark-scale/);
-  assert.match(staticBuilder, /--line-scale/);
+  assert.doesNotMatch(staticBuilder, /--line-scale/);
   assert.match(staticBuilder, /fonts\.googleapis\.com\/css2\?family=Geist:wght@600/);
   assert.doesNotMatch(staticBuilder, /textLength|lengthAdjust|<svg/);
   assert.doesNotMatch(css, /projectStrip|atlasSection/i);

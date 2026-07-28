@@ -17,25 +17,10 @@ const html = String.raw`<!doctype html>
       </h1>
       <script>
         (() => {
-          const mobileQuery = window.matchMedia("(max-width: 760px)");
-
           const fit = () => {
             const wordmark = document.querySelector("[data-fit-wordmark]");
             if (!wordmark) return;
             wordmark.style.setProperty("--wordmark-scale", "1");
-            const lines = [...wordmark.querySelectorAll("[data-fit-line]")];
-            lines.forEach((line) => line.style.setProperty("--line-scale", "1"));
-
-            if (mobileQuery.matches) {
-              lines.forEach((line) => {
-                const width = line.scrollWidth;
-                if (width > 0) {
-                  line.style.setProperty("--line-scale", String(window.innerWidth / width));
-                }
-              });
-              return;
-            }
-
             const width = wordmark.scrollWidth;
             if (width > 0) {
               wordmark.style.setProperty("--wordmark-scale", String(window.innerWidth / width));
@@ -108,12 +93,7 @@ body {
   .screenWordmark {
     flex-direction: column;
     align-items: center;
-    transform: none;
-  }
-
-  .screenWordmark span {
-    transform: scale(var(--line-scale, 1));
-    transform-origin: center top;
+    text-align: center;
   }
 
   .desktopDash {

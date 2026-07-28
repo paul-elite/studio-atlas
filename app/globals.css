@@ -68,12 +68,7 @@ body {
   .screenWordmark {
     flex-direction: column;
     align-items: center;
-    transform: none;
-  }
-
-  .screenWordmark span {
-    transform: scale(var(--line-scale, 1));
-    transform-origin: center top;
+    text-align: center;
   }
 
   .desktopDash {
