@@ -12,14 +12,24 @@ const html = String.raw`<!doctype html>
     <main class="home">
       <h1 class="screenWordmark" data-fit-wordmark>
         <span data-fit-line>studio</span>
-        <span class="desktopDash" aria-hidden="true">—</span>
+        <span class="desktopDash" aria-hidden="true" style="display: none">—</span>
         <span data-fit-line>atlas</span>
       </h1>
       <script>
         (() => {
+          const desktopQuery = window.matchMedia("(min-width: 901px) and (hover: hover) and (pointer: fine)");
+
+          const updateDash = () => {
+            const dash = document.querySelector("[data-fit-wordmark] .desktopDash");
+            if (dash) {
+              dash.style.display = desktopQuery.matches ? "block" : "none";
+            }
+          };
+
           const fit = () => {
             const wordmark = document.querySelector("[data-fit-wordmark]");
             if (!wordmark) return;
+            updateDash();
             wordmark.style.setProperty("--wordmark-scale", "1");
             const width = wordmark.scrollWidth;
             if (width > 0) {
@@ -28,6 +38,7 @@ const html = String.raw`<!doctype html>
           };
           document.fonts?.ready.then(fit);
           window.addEventListener("resize", fit, { passive: true });
+          desktopQuery.addEventListener("change", fit);
           fit();
         })();
       </script>
@@ -92,10 +103,6 @@ body {
 }
 
 @media (min-width: 901px) and (hover: hover) and (pointer: fine) {
-  .desktopDash {
-    display: block;
-  }
-
   .desktopDash + span {
     margin-left: -0.02em;
   }

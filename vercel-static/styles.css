@@ -54,10 +54,6 @@ body {
 }
 
 @media (min-width: 901px) and (hover: hover) and (pointer: fine) {
-  .desktopDash {
-    display: block;
-  }
-
   .desktopDash + span {
     margin-left: -0.02em;
   }
