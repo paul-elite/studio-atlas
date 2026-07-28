@@ -54,7 +54,8 @@ test("keeps the app and static deployment aligned", async () => {
   assert.match(css, /font-family:\s*var\(--font-geist/);
   assert.match(css, /font-size:\s*15\.5vw/);
   assert.match(css, /font-weight:\s*600/);
-  assert.match(css, /word-spacing:\s*-0\.08em/);
+  assert.match(css, /align-items:\s*start/);
+  assert.match(css, /word-spacing:\s*-0\.24em/);
   assert.match(css, /\.screenWordmark\s*\{/);
   assert.match(staticBuilder, /--background:\s*#41de03/);
   assert.match(staticBuilder, /studio atlas/);
