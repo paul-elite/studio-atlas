@@ -51,50 +51,8 @@ main {
   background: var(--background);
 }
 
-.atlasNav {
-  display: grid;
-  grid-template-columns: 1fr 1fr auto 1fr 1fr;
-  align-items: center;
-  min-height: 54px;
-  border-bottom: 1px solid var(--line);
-  font-size: 0.88rem;
-  line-height: 1;
-  text-transform: uppercase;
-}
-
-.atlasNav a {
-  padding: 18px 20px;
-  white-space: nowrap;
-}
-
-.atlasNav a:nth-child(2),
-.atlasNav a:nth-child(4) {
-  text-align: center;
-}
-
-.atlasNav a:last-child {
-  text-align: right;
-}
-
-.atlasNav a:hover,
-.atlasNav a:focus-visible {
-  background: var(--foreground);
-  color: var(--background);
-  outline: none;
-}
-
-.atlasMark {
-  width: 42px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle, #f7f7f4 0 18%, transparent 19%),
-    repeating-conic-gradient(from 8deg, #b09248 0 7deg, #ead69b 7deg 12deg);
-  box-shadow: inset 0 0 0 8px color-mix(in srgb, #b09248 30%, transparent);
-}
-
 .wordmark {
-  padding: 14px 14px 10px;
+  padding: 18px 14px 16px;
   border-bottom: 1px solid var(--line);
   font-family: var(--font-inter-tight), Arial, Helvetica, sans-serif;
   font-size: 13.6rem;
@@ -104,46 +62,13 @@ main {
   white-space: nowrap;
 }
 
-.statementRow {
-  display: grid;
-  grid-template-columns: minmax(280px, 0.5fr) minmax(280px, 0.34fr);
-  justify-content: space-between;
-  gap: 48px;
-  padding: 18px 22px 16px;
-  border-bottom: 1px solid var(--line);
-}
-
-.statementRow h1,
-.statementRow p {
-  margin: 0;
-}
-
-.statementRow h1 {
-  max-width: 560px;
-  font-size: 3rem;
-  font-weight: 600;
-  line-height: 0.98;
-  letter-spacing: 0;
-}
-
-.statementRow p {
-  align-self: start;
-  max-width: 420px;
-  justify-self: end;
-  padding-top: 2px;
-  font-size: 1.08rem;
-  font-weight: 600;
-  line-height: 1.06;
-  letter-spacing: 0;
-}
-
 .projectStrip {
   display: grid;
   grid-template-columns: 0.82fr 0.88fr 1.46fr 1.48fr 1.55fr 0.82fr;
   align-items: end;
   gap: 6px;
   min-height: 43vh;
-  padding-top: clamp(54px, 10vw, 140px);
+  padding-top: clamp(36px, 7vw, 96px);
 }
 
 .projectTile {
@@ -314,37 +239,13 @@ main {
   .wordmark {
     font-size: 10.6rem;
   }
-
-  .statementRow h1 {
-    font-size: 2.5rem;
-  }
 }
 
 @media (max-width: 900px) {
-  .atlasNav {
-    grid-template-columns: 1fr auto 1fr;
-  }
-
-  .atlasNav a:nth-child(2),
-  .atlasNav a:nth-child(4) {
-    display: none;
-  }
-
   .wordmark {
     padding: 12px 10px 10px;
     font-size: 7rem;
     white-space: normal;
-  }
-
-  .statementRow {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 18px 14px 20px;
-  }
-
-  .statementRow p {
-    justify-self: start;
-    max-width: 540px;
   }
 
   .projectStrip {
@@ -362,19 +263,7 @@ main {
 }
 
 @media (max-width: 560px) {
-  .atlasNav {
-    font-size: 0.76rem;
-  }
-
   .wordmark {
     font-size: 4.8rem;
-  }
-
-  .statementRow h1 {
-    font-size: 2rem;
-  }
-
-  .statementRow p {
-    font-size: 1rem;
   }
 }

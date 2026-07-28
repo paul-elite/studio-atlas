@@ -32,10 +32,9 @@ test("server-renders the single-section Studio Atlas layout", async () => {
   assert.match(html, /<title>Studio Atlas<\/title>/i);
   assert.match(html, /class="atlasSection"/);
   assert.match(html, /Studio Atlas/);
-  assert.match(html, /Where precise ideas/);
-  assert.match(html, /become lasting objects/);
-  assert.match(html, /product, brand, packaging, software, and hardware/);
   assert.match(html, /class="projectStrip"/);
+  assert.doesNotMatch(html, /Where precise ideas|become lasting objects/);
+  assert.doesNotMatch(html, /Home|Work|About|Contact/);
   assert.doesNotMatch(html, /frontier companies|Studio range/);
 });
 
@@ -53,12 +52,14 @@ test("keeps the app and static deployment aligned", async () => {
   assert.match(page, /className="atlasSection"/);
   assert.match(page, /className="wordmark"/);
   assert.match(page, /className="projectStrip"/);
+  assert.doesNotMatch(page, /atlasNav|statementRow/);
   assert.match(layout, /const title = "Studio Atlas"/);
   assert.match(staticBuilder, /class="atlasSection"/);
+  assert.doesNotMatch(staticBuilder, /atlasNav|statementRow/);
   assert.match(staticBuilder, /readFile\("app\/globals\.css"/);
-  assert.match(css, /\.atlasNav\s*\{/);
   assert.match(css, /\.wordmark\s*\{/);
   assert.match(css, /\.projectStrip\s*\{/);
+  assert.doesNotMatch(css, /atlasNav|statementRow|atlasMark/);
   assert.doesNotMatch(css, /letter-spacing:\s*-/);
   assert.doesNotMatch(css, /font-size:\s*[^;]*vw/);
   assert.doesNotMatch(`${page}\n${css}\n${staticBuilder}`, /Goodside/);

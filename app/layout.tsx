@@ -19,8 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const protocol = headerStore.get("x-forwarded-proto") ?? "https";
   const origin = host ? `${protocol}://${host}` : "https://example.com";
   const title = "Studio Atlas";
-  const description =
-    "Studio Atlas is an independent design studio shaping product, brand, packaging, software, and hardware.";
+  const description = "";
 
   return {
     title,

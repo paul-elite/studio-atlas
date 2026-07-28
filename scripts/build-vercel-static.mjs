@@ -6,38 +6,13 @@ const html = String.raw`<!doctype html>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Studio Atlas</title>
-    <meta
-      name="description"
-      content="Studio Atlas is an independent design studio shaping product, brand, packaging, software, and hardware."
-    />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <main>
       <section class="atlasSection" aria-label="Studio Atlas introduction">
-        <nav class="atlasNav" aria-label="Primary navigation">
-          <a href="#top">• Home</a>
-          <a href="mailto:hello@studioatlas.work">Work</a>
-          <span class="atlasMark" aria-hidden="true"></span>
-          <a href="mailto:hello@studioatlas.work">About</a>
-          <a href="mailto:hello@studioatlas.work">Contact</a>
-        </nav>
-
         <div class="wordmark" id="top" aria-label="Studio Atlas">
           Studio Atlas
-        </div>
-
-        <div class="statementRow">
-          <h1>
-            Where precise ideas
-            <br />
-            become lasting objects
-          </h1>
-          <p>
-            Studio Atlas is an independent design studio shaping product,
-            brand, packaging, software, and hardware into one coherent market
-            presence.
-          </p>
         </div>
 
         <div class="projectStrip" aria-label="Studio Atlas visual range">
