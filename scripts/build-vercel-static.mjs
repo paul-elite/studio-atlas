@@ -13,7 +13,7 @@ const html = String.raw`<!doctype html>
 `;
 
 const css = String.raw`:root {
-  --background: #ffffff;
+  --background: #41de03;
 }
 
 html,

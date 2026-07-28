@@ -47,6 +47,8 @@ test("keeps the app and static deployment blank", async () => {
 
   assert.match(page, /return null/);
   assert.match(layout, /const title = ""/);
+  assert.match(css, /--background:\s*#41de03/);
+  assert.match(staticBuilder, /--background:\s*#41de03/);
   assert.doesNotMatch(css, /wordmark|projectStrip|atlasSection/i);
   assert.doesNotMatch(
     `${page}\n${layout}\n${css}\n${staticBuilder}`,
