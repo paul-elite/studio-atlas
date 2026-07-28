@@ -68,7 +68,7 @@ test("keeps the app and static deployment aligned", async () => {
   assert.match(css, /font-weight:\s*600/);
   assert.match(css, /align-items:\s*start/);
   assert.match(css, /justify-items:\s*start/);
-  assert.match(css, /padding:\s*var\(--page-inset\)/);
+  assert.match(css, /padding:\s*0 var\(--page-inset\) var\(--page-inset\) 0/);
   assert.match(css, /letter-spacing:\s*-0\.06em/);
   assert.match(css, /word-spacing:\s*-0\.12em/);
   assert.match(css, /transform-origin:\s*left top/);

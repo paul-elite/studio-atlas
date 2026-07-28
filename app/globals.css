@@ -37,7 +37,7 @@ body {
   justify-items: start;
   min-height: 100vh;
   overflow: hidden;
-  padding: var(--page-inset);
+  padding: 0 var(--page-inset) var(--page-inset) 0;
   width: 100%;
 }
 
