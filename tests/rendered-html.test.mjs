@@ -68,7 +68,9 @@ test("keeps the app and static deployment aligned", async () => {
   assert.match(css, /transform-origin:\s*center top/);
   assert.match(css, /@media \(max-width:\s*900px\)/);
   assert.match(css, /flex-direction:\s*column/);
-  assert.match(css, /text-align:\s*center/);
+  assert.match(css, /overflow-x:\s*hidden/);
+  assert.match(css, /align-items:\s*flex-start/);
+  assert.match(css, /text-align:\s*left/);
   assert.doesNotMatch(css, /--line-scale/);
   assert.match(css, /\.desktopDash/);
   assert.match(css, /display:\s*none/);

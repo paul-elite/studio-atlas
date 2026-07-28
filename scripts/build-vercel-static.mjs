@@ -46,6 +46,7 @@ const css = String.raw`@import url("https://fonts.googleapis.com/css2?family=Gei
 html,
 body {
   min-height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -90,10 +91,15 @@ body {
 }
 
 @media (max-width: 900px) {
+  .home {
+    justify-items: center;
+    width: 100%;
+  }
+
   .screenWordmark {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
   }
 
   .desktopDash {
