@@ -1,22 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f4efe6;
-  --foreground: #151514;
-  --muted: #716d66;
-  --line: #d8d0c3;
-  --paper: #fbf7ef;
-  --deep: #123d3a;
-  --moss: #8c9b6f;
-  --clay: #c7663f;
-  --blue: #315f7d;
-  --sand: #d9c7a7;
+  --background: #ffffff;
+  --foreground: #111111;
+  --muted: #6f6f6f;
+  --line: #e7e7e7;
+  --paper: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter-tight);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -31,13 +26,9 @@ html {
 body {
   margin: 0;
   overflow-x: hidden;
-  background:
-    linear-gradient(rgba(21, 21, 20, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(21, 21, 20, 0.035) 1px, transparent 1px),
-    var(--background);
-  background-size: 42px 42px;
+  background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter-tight), Arial, Helvetica, sans-serif;
 }
 
 a {
@@ -47,13 +38,15 @@ a {
 
 main {
   min-height: 100vh;
+  background: var(--background);
 }
 
 .hero {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  min-height: 94vh;
+  min-height: 100vh;
   padding: 24px;
+  background: var(--background);
 }
 
 .nav {
@@ -84,7 +77,14 @@ main {
   padding: 0 14px;
   border: 1px solid var(--foreground);
   border-radius: 8px;
-  background: rgba(251, 247, 239, 0.62);
+  background: var(--paper);
+}
+
+.navCta:hover,
+.navCta:focus-visible {
+  background: var(--foreground);
+  color: var(--background);
+  outline: none;
 }
 
 .heroStatement {
@@ -95,10 +95,9 @@ main {
   padding: 64px 0;
 }
 
-.eyebrow,
-.sectionKicker {
+.eyebrow {
   margin: 0 0 18px;
-  color: var(--clay);
+  color: var(--muted);
   font-size: 0.78rem;
   font-weight: 850;
   letter-spacing: 0.08em;
@@ -106,8 +105,6 @@ main {
 }
 
 h1,
-h2,
-h3,
 p {
   margin-top: 0;
 }
@@ -115,24 +112,10 @@ p {
 h1 {
   max-width: 1220px;
   margin-bottom: 0;
-  font-size: clamp(3.15rem, 8.4vw, 8.6rem);
+  font-size: clamp(3.2rem, 8.6vw, 8.7rem);
   font-weight: 820;
-  line-height: 0.93;
+  line-height: 0.92;
   letter-spacing: 0;
-}
-
-h2 {
-  margin-bottom: 0;
-  font-size: clamp(2.2rem, 5vw, 5.6rem);
-  font-weight: 790;
-  line-height: 0.98;
-  letter-spacing: 0;
-}
-
-h3 {
-  margin-bottom: 14px;
-  font-size: 1.3rem;
-  line-height: 1.1;
 }
 
 .navCards {
@@ -151,7 +134,7 @@ h3 {
   padding: 18px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(251, 247, 239, 0.82);
+  background: var(--paper);
   transition:
     transform 180ms ease,
     border-color 180ms ease,
@@ -162,7 +145,6 @@ h3 {
 .navCard:focus-visible {
   transform: translateY(-3px);
   border-color: var(--foreground);
-  background: var(--paper);
   outline: none;
 }
 
@@ -175,277 +157,6 @@ h3 {
   color: var(--muted);
   font-size: 0.94rem;
   line-height: 1.35;
-}
-
-.section {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 112px 24px;
-}
-
-.intro {
-  display: grid;
-  grid-template-columns: 240px minmax(0, 1fr);
-  gap: 48px;
-  border-top: 1px solid var(--line);
-}
-
-.introCopy {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.55fr);
-  gap: 28px;
-}
-
-.introCopy h2 {
-  grid-row: span 2;
-}
-
-.introCopy p {
-  color: var(--muted);
-  font-size: 1.08rem;
-  line-height: 1.62;
-}
-
-.sectionHeader {
-  max-width: 980px;
-  margin-bottom: 42px;
-}
-
-.proofGrid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.proofCard {
-  display: grid;
-  min-height: 320px;
-  padding: 24px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--paper);
-}
-
-.proofCard p {
-  color: var(--muted);
-  line-height: 1.55;
-}
-
-.proofCard strong {
-  align-self: end;
-  color: var(--deep);
-  font-size: 1.1rem;
-}
-
-.servicesBand {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.85fr);
-  gap: 64px;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 112px 24px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-
-.serviceList {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  align-content: start;
-}
-
-.serviceList span {
-  min-height: 86px;
-  padding: 18px;
-  border: 1px solid rgba(21, 21, 20, 0.18);
-  border-radius: 8px;
-  background: rgba(251, 247, 239, 0.7);
-  font-size: 1.08rem;
-  font-weight: 760;
-}
-
-.visualGrid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: minmax(150px, 11vw);
-  gap: 14px;
-}
-
-.visualTile {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  overflow: hidden;
-  min-height: 180px;
-  padding: 18px;
-  border: 1px solid rgba(21, 21, 20, 0.12);
-  border-radius: 8px;
-  background: var(--paper);
-}
-
-.visualTile::before,
-.visualTile::after {
-  position: absolute;
-  content: "";
-  pointer-events: none;
-}
-
-.visualTile span {
-  position: relative;
-  z-index: 1;
-  max-width: 180px;
-  color: var(--paper);
-  font-weight: 820;
-  line-height: 1.05;
-}
-
-.tile1 {
-  grid-column: span 5;
-  grid-row: span 2;
-  background: var(--deep);
-}
-
-.tile1::before {
-  right: -56px;
-  bottom: -80px;
-  width: 260px;
-  height: 260px;
-  border: 22px solid var(--moss);
-  border-radius: 50%;
-}
-
-.tile2 {
-  grid-column: span 4;
-  background: var(--clay);
-}
-
-.tile2::before {
-  inset: 34px 30px auto auto;
-  width: 120px;
-  height: 120px;
-  background: var(--sand);
-  clip-path: polygon(50% 0, 100% 100%, 0 100%);
-}
-
-.tile3 {
-  grid-column: span 3;
-  background: var(--blue);
-}
-
-.tile3::before {
-  top: 28px;
-  right: 34px;
-  width: 70px;
-  height: 70px;
-  border-radius: 999px;
-  background: var(--paper);
-}
-
-.tile4 {
-  grid-column: span 7;
-  background: #25231f;
-}
-
-.tile4::before {
-  top: 36px;
-  left: 36px;
-  width: 72%;
-  height: 24px;
-  border-top: 1px solid rgba(251, 247, 239, 0.5);
-  border-bottom: 1px solid rgba(251, 247, 239, 0.5);
-}
-
-.tile4::after {
-  right: 42px;
-  bottom: 42px;
-  width: 120px;
-  height: 120px;
-  border-radius: 8px;
-  background: var(--clay);
-}
-
-.tile5 {
-  grid-column: span 3;
-  background: var(--moss);
-}
-
-.tile5 span,
-.tile6 span {
-  color: var(--foreground);
-}
-
-.tile5::before {
-  inset: 0;
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(21, 21, 20, 0.12) 0 1px,
-    transparent 1px 13px
-  );
-}
-
-.tile6 {
-  grid-column: span 2;
-  background: var(--sand);
-}
-
-.tile6::before {
-  top: 20px;
-  left: 20px;
-  width: calc(100% - 40px);
-  height: calc(100% - 40px);
-  border: 1px solid rgba(21, 21, 20, 0.22);
-  border-radius: 50%;
-}
-
-.quoteBand {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 96px 24px;
-  border-top: 1px solid var(--line);
-}
-
-blockquote {
-  max-width: 1000px;
-  margin: 0;
-  font-size: clamp(2rem, 4.8vw, 5.2rem);
-  font-weight: 780;
-  line-height: 0.98;
-}
-
-.quoteBand p {
-  margin: 24px 0 0;
-  color: var(--muted);
-}
-
-.contact {
-  margin-bottom: 42px;
-  border-radius: 8px;
-  background: #151514;
-  color: var(--paper);
-}
-
-.contact h2 {
-  max-width: 1060px;
-  margin-bottom: 28px;
-}
-
-.primaryButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 52px;
-  padding: 0 20px;
-  border-radius: 8px;
-  background: var(--paper);
-  color: var(--foreground);
-  font-weight: 850;
-}
-
-.primaryButton:hover,
-.primaryButton:focus-visible {
-  background: var(--moss);
-  outline: none;
 }
 
 @media (max-width: 900px) {
@@ -462,40 +173,11 @@ blockquote {
     font-size: clamp(3rem, 13vw, 5.8rem);
   }
 
-  h2 {
-    font-size: clamp(2.25rem, 10vw, 4rem);
-  }
-
-  .navCards,
-  .intro,
-  .introCopy,
-  .proofGrid,
-  .servicesBand,
-  .serviceList {
+  .navCards {
     grid-template-columns: 1fr;
   }
 
   .navCard {
     min-height: 128px;
-  }
-
-  .section,
-  .servicesBand,
-  .quoteBand {
-    padding: 78px 18px;
-  }
-
-  .visualGrid {
-    grid-template-columns: 1fr;
-    grid-auto-rows: minmax(220px, auto);
-  }
-
-  .visualTile {
-    grid-column: auto;
-    grid-row: auto;
-  }
-
-  .contact {
-    margin-bottom: 18px;
   }
 }
