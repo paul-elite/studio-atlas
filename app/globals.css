@@ -3,6 +3,7 @@
 :root {
   --background: #b6ff29;
   --foreground: #111111;
+  --page-inset: clamp(8px, 1vw, 16px);
 }
 
 @theme inline {
@@ -36,6 +37,8 @@ body {
   justify-items: center;
   min-height: 100vh;
   overflow: hidden;
+  padding: var(--page-inset);
+  width: 100%;
 }
 
 .screenWordmark {

@@ -32,9 +32,14 @@ const html = String.raw`<!doctype html>
             if (!wordmark) return;
             updateDash();
             wordmark.style.setProperty("--wordmark-scale", "1");
+            const home = wordmark.closest(".home");
+            const style = home ? window.getComputedStyle(home) : null;
+            const availableWidth = home && style
+              ? home.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight)
+              : window.innerWidth;
             const width = wordmark.scrollWidth;
             if (width > 0) {
-              wordmark.style.setProperty("--wordmark-scale", String(window.innerWidth / width));
+              wordmark.style.setProperty("--wordmark-scale", String(availableWidth / width));
             }
           };
           document.fonts?.ready.then(fit);
@@ -53,6 +58,7 @@ const css = String.raw`@import url("https://fonts.googleapis.com/css2?family=Gei
 :root {
   --background: #b6ff29;
   --foreground: #111111;
+  --page-inset: clamp(8px, 1vw, 16px);
 }
 
 html,
@@ -73,6 +79,8 @@ body {
   justify-items: center;
   min-height: 100vh;
   overflow: hidden;
+  padding: var(--page-inset);
+  width: 100%;
 }
 
 .screenWordmark {

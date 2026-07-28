@@ -31,9 +31,14 @@ export default function Home() {
     if (!wordmark) return;
     updateDash();
     wordmark.style.setProperty("--wordmark-scale", "1");
+    const home = wordmark.closest(".home");
+    const style = home ? window.getComputedStyle(home) : null;
+    const availableWidth = home && style
+      ? home.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight)
+      : window.innerWidth;
     const width = wordmark.scrollWidth;
     if (width > 0) {
-      wordmark.style.setProperty("--wordmark-scale", String(window.innerWidth / width));
+      wordmark.style.setProperty("--wordmark-scale", String(availableWidth / width));
     }
   };
   document.fonts?.ready.then(fit);
