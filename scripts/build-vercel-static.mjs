@@ -15,6 +15,11 @@ const html = String.raw`<!doctype html>
         <span class="desktopDash" aria-hidden="true" style="display: none">—</span>
         <span data-fit-line>atlas</span>
       </h1>
+      <nav class="homeMenu" aria-label="Studio sections">
+        <a href="#case-studies">Case studies</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#pricing">Pricing</a>
+      </nav>
       <script>
         (() => {
           const desktopQuery = window.matchMedia("(min-width: 901px) and (hover: hover) and (pointer: fine)");
@@ -105,6 +110,31 @@ body {
   display: block;
 }
 
+.homeMenu {
+  display: grid;
+  gap: 8px;
+  margin-top: 22px;
+  padding-left: 6px;
+}
+
+.homeMenu a {
+  color: var(--foreground);
+  font-family: "Geist", Arial, Helvetica, sans-serif;
+  font-size: clamp(18px, 2.5vw, 30px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.homeMenu a:hover,
+.homeMenu a:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
 .desktopDash {
   display: none;
   margin-inline: 0.04em;
@@ -138,6 +168,11 @@ body {
   .desktopDash + span {
     margin-top: -0.03em;
     margin-left: 0;
+  }
+
+  .homeMenu {
+    margin-top: 18px;
+    padding-left: 2px;
   }
 }
 `;

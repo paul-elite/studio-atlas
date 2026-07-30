@@ -12,6 +12,11 @@ export default function Home() {
         </span>
         <span data-fit-line>atlas</span>
       </h1>
+      <nav className="homeMenu" aria-label="Studio sections">
+        <a href="#case-studies">Case studies</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#pricing">Pricing</a>
+      </nav>
       <script
         dangerouslySetInnerHTML={{
           __html: `

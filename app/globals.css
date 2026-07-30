@@ -61,6 +61,31 @@ body {
   display: block;
 }
 
+.homeMenu {
+  display: grid;
+  gap: 8px;
+  margin-top: 22px;
+  padding-left: 6px;
+}
+
+.homeMenu a {
+  color: var(--foreground);
+  font-family: var(--font-geist, "Geist"), Arial, Helvetica, sans-serif;
+  font-size: clamp(18px, 2.5vw, 30px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.homeMenu a:hover,
+.homeMenu a:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
 .desktopDash {
   display: none;
   margin-inline: 0.04em;
@@ -94,5 +119,10 @@ body {
   .desktopDash + span {
     margin-top: -0.03em;
     margin-left: 0;
+  }
+
+  .homeMenu {
+    margin-top: 18px;
+    padding-left: 2px;
   }
 }
