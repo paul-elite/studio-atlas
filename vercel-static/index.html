@@ -3,73 +3,56 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Studio Atlas | Design Studio for Frontier Teams</title>
-    <meta
-      name="description"
-      content="Studio Atlas helps ambitious technical teams turn complex products into clear brands, websites, and launch systems."
-    />
-    <meta property="og:title" content="Studio Atlas | Design Studio for Frontier Teams" />
-    <meta
-      property="og:description"
-      content="Studio Atlas helps ambitious technical teams turn complex products into clear brands, websites, and launch systems."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="/og.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="/og.png" />
-    <link rel="icon" href="/favicon.svg" />
+    <title></title>
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <main>
-      <section class="hero" id="top">
-        <nav class="nav" aria-label="Main navigation">
-          <a class="brand" href="#top" aria-label="Go to homepage">Studio Atlas</a>
-          <a class="navCta" href="mailto:hello@studioatlas.work">Work with us</a>
-        </nav>
+    <main class="home">
+      <h1 class="screenWordmark" data-fit-wordmark>
+        <span data-fit-line>studio</span>
+        <span class="desktopDash" aria-hidden="true" style="display: none">—</span>
+        <span data-fit-line>atlas</span>
+      </h1>
+      <nav class="homeMenu" aria-label="Studio sections">
+        <a href="#case-studies">Case studies</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#pricing">Pricing</a>
+      </nav>
+      <script>
+        (() => {
+          const desktopQuery = window.matchMedia("(min-width: 901px) and (hover: hover) and (pointer: fine)");
 
-        <div class="heroGrid">
-          <div class="introBlock">
-            <p class="eyebrow">Introduction</p>
-            <h1>
-              We help frontier companies make complex ideas feel obvious,
-              credible, and worth caring about.
-            </h1>
-          </div>
+          const updateDash = () => {
+            const dash = document.querySelector("[data-fit-wordmark] .desktopDash");
+            if (dash) {
+              const hasTouch = navigator.maxTouchPoints > 0;
+              dash.style.display = desktopQuery.matches && !hasTouch ? "block" : "none";
+            }
+          };
 
-          <aside class="proofBlock" aria-label="Studio credibility">
-            <p>
-              "Trusted to turn technical products into clear brands, launch
-              pages, and digital systems."
-            </p>
-            <span>Studio Atlas</span>
-          </aside>
-
-          <a class="latestBlock" href="mailto:hello@studioatlas.work">
-            <span>Latest</span>
-            <strong>Now shaping Studio Atlas for launch</strong>
-            <em>Learn more</em>
-          </a>
-
-          <div class="updatesBlock" aria-label="Updates">
-            <span>Updates</span>
-            <div class="updatesList">
-              <a href="mailto:hello@studioatlas.work">
-                <strong>Brand systems for technical products</strong>
-                <em>See approach</em>
-              </a>
-              <a href="mailto:hello@studioatlas.work">
-                <strong>Launch pages that make the pitch clear</strong>
-                <em>View format</em>
-              </a>
-              <a href="mailto:hello@studioatlas.work">
-                <strong>Product surfaces for complex workflows</strong>
-                <em>Start a project</em>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+          const fit = () => {
+            const wordmark = document.querySelector("[data-fit-wordmark]");
+            if (!wordmark) return;
+            updateDash();
+            wordmark.style.setProperty("--wordmark-scale", "1");
+            const home = wordmark.closest(".home");
+            const style = home ? window.getComputedStyle(home) : null;
+            const availableWidth = home && style
+              ? home.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight)
+              : window.innerWidth;
+            const isDesktop = desktopQuery.matches && navigator.maxTouchPoints === 0;
+            const edgeBuffer = isDesktop && style ? parseFloat(style.paddingRight) : 0;
+            const width = wordmark.scrollWidth;
+            if (width > 0) {
+              wordmark.style.setProperty("--wordmark-scale", String((availableWidth - edgeBuffer) / width));
+            }
+          };
+          document.fonts?.ready.then(fit);
+          window.addEventListener("resize", fit, { passive: true });
+          desktopQuery.addEventListener("change", fit);
+          fit();
+        })();
+      </script>
     </main>
   </body>
 </html>

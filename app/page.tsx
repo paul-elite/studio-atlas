@@ -1,67 +1,61 @@
-const updates = [
-  {
-    title: "Brand systems for technical products",
-    action: "See approach",
-  },
-  {
-    title: "Launch pages that make the pitch clear",
-    action: "View format",
-  },
-  {
-    title: "Product surfaces for complex workflows",
-    action: "Start a project",
-  },
-];
-
 export default function Home() {
   return (
-    <main>
-      <section className="hero" id="top">
-        <nav className="nav" aria-label="Main navigation">
-          <a className="brand" href="#top" aria-label="Go to homepage">
-            Studio Atlas
-          </a>
-          <a className="navCta" href="mailto:hello@studioatlas.work">
-            Work with us
-          </a>
-        </nav>
+    <main className="home">
+      <h1 className="screenWordmark" data-fit-wordmark>
+        <span data-fit-line>studio</span>
+        <span
+          className="desktopDash"
+          aria-hidden="true"
+          style={{ display: "none" }}
+        >
+          —
+        </span>
+        <span data-fit-line>atlas</span>
+      </h1>
+      <nav className="homeMenu" aria-label="Studio sections">
+        <a href="#case-studies">Case studies</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#pricing">Pricing</a>
+      </nav>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+(() => {
+  const desktopQuery = window.matchMedia("(min-width: 901px) and (hover: hover) and (pointer: fine)");
 
-        <div className="heroGrid">
-          <div className="introBlock">
-            <p className="eyebrow">Introduction</p>
-            <h1>
-              We help frontier companies make complex ideas feel obvious,
-              credible, and worth caring about.
-            </h1>
-          </div>
+  const updateDash = () => {
+    const dash = document.querySelector("[data-fit-wordmark] .desktopDash");
+    if (dash) {
+      const hasTouch = navigator.maxTouchPoints > 0;
+      dash.style.display = desktopQuery.matches && !hasTouch ? "block" : "none";
+    }
+  };
 
-          <aside className="proofBlock" aria-label="Studio credibility">
-            <p>
-              "Trusted to turn technical products into clear brands, launch
-              pages, and digital systems."
-            </p>
-            <span>Studio Atlas</span>
-          </aside>
-
-          <a className="latestBlock" href="mailto:hello@studioatlas.work">
-            <span>Latest</span>
-            <strong>Now shaping Studio Atlas for launch</strong>
-            <em>Learn more</em>
-          </a>
-
-          <div className="updatesBlock" aria-label="Updates">
-            <span>Updates</span>
-            <div className="updatesList">
-              {updates.map((item) => (
-                <a href="mailto:hello@studioatlas.work" key={item.title}>
-                  <strong>{item.title}</strong>
-                  <em>{item.action}</em>
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+  const fit = () => {
+    const wordmark = document.querySelector("[data-fit-wordmark]");
+    if (!wordmark) return;
+    updateDash();
+    wordmark.style.setProperty("--wordmark-scale", "1");
+    const home = wordmark.closest(".home");
+    const style = home ? window.getComputedStyle(home) : null;
+    const availableWidth = home && style
+      ? home.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight)
+      : window.innerWidth;
+    const isDesktop = desktopQuery.matches && navigator.maxTouchPoints === 0;
+    const edgeBuffer = isDesktop && style ? parseFloat(style.paddingRight) : 0;
+    const width = wordmark.scrollWidth;
+    if (width > 0) {
+      wordmark.style.setProperty("--wordmark-scale", String((availableWidth - edgeBuffer) / width));
+    }
+  };
+  document.fonts?.ready.then(fit);
+  window.addEventListener("resize", fit, { passive: true });
+  desktopQuery.addEventListener("change", fit);
+  fit();
+})();
+`,
+        }}
+      />
     </main>
   );
 }
